@@ -18,47 +18,6 @@ for (let i = 0; i < sliderPanel.length; i++) {
     sliderPanel[i].style.display = 'flex';
 }
 
-pausePlayButton.onclick = function () {
-    if (playing) pauseSlideShow();
-    else playSlideShow();
-};
-
-nextButton.onclick = function () {
-    pauseSlideShow();
-    nextActiveSlide();
-    nextPrevSlide();
-};
-
-previousButton.onclick = function () {
-    pauseSlideShow();
-    prevPrevSlide();
-    prevActiveSlide();
-};
-
-//---------------------------------------------------------------------
-document.addEventListener('keydown', keyNavigation);
-
-function keyNavigation(event) {
-
-    if (event.code === 'ArrowLeft') { //стрелка влево
-        pauseSlideShow();
-        prevActiveSlide();
-        prevPrevSlide()
-    }
-    if (event.code === 'ArrowRight') { //стрелка вправо
-        pauseSlideShow();
-        nextActiveSlide();
-        nextPrevSlide();
-    }
-    if (event.code === 'Space') { //пробел
-        if (playing) pauseSlideShow();
-        else playSlideShow();
-
-    }
-};
-
-//---------------------------------------------------------------------
-
 function nextActiveSlide() {
     goToActiveSlide(currentSliderItem + 1);
 }
@@ -112,3 +71,44 @@ function playSlideShow() {
     sliderInterval = setInterval(nextActiveSlide, 3000);
     prevSliderInterval = setInterval(nextPrevSlide, 3000);
 }
+
+pausePlayButton.onclick = function () {
+    if (playing) pauseSlideShow();
+    else playSlideShow();
+};
+
+nextButton.onclick = function () {
+    pauseSlideShow();
+    nextActiveSlide();
+    nextPrevSlide();
+};
+
+previousButton.onclick = function () {
+    pauseSlideShow();
+    prevPrevSlide();
+    prevActiveSlide();
+};
+
+//---------------------------------------------------------------------
+document.addEventListener('keydown', keyNavigation);
+
+function keyNavigation(event) {
+
+    if (event.code === 'ArrowLeft') { //стрелка влево
+        pauseSlideShow();
+        prevActiveSlide();
+        prevPrevSlide()
+    }
+    if (event.code === 'ArrowRight') { //стрелка вправо
+        pauseSlideShow();
+        nextActiveSlide();
+        nextPrevSlide();
+    }
+    if (event.code === 'Space') { //пробел
+        if (playing) pauseSlideShow();
+        else playSlideShow();
+
+    }
+}
+
+//---------------------------------------------------------------------
